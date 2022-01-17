@@ -49,96 +49,64 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  int reverseCounter = 100;
-  int index = 0;
-  dynamic timer;
-
-  List<String> images = [
-    'https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_960_720.jpg',
-    'https://cdn.pixabay.com/photo/2017/02/07/16/47/kingfisher-2046453_960_720.jpg',
-    'https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_960_720.jpg'
-  ];
   @override
   void initState() {
     super.initState();
-    Timer timer = Timer.periodic(const Duration(seconds: 2), (timer) {
-      changeImage();
-    });
   }
 
   @override
   void dispose() {
     super.dispose();
-    timer.cancel();
-  }
-  // void _incrementCounter() {
-  //   print('pressed');
-  //   setState(() {
-  //     reverseCounter--;
-  //     _counter++;
-  //   });
-  // }
-
-  void changeImage() {
-    setState(() {
-      if (index > images.length - 2) {
-        index = 0;
-      } else {
-        index++;
-      }
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text(
+          'Flutter Development',
+          style: TextStyle(fontSize: 30, color: Colors.white),
+        ),
       ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const Text(
-            'You have pushed the button this many times:',
-          ),
-          Text(
-            '$_counter',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          Text(
-            '$reverseCounter',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          Container(
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                image: DecorationImage(
-                    image: NetworkImage(
-                      images[index],
-                    ),
-                    fit: BoxFit.cover),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(200),
-                child: Text(
-                  'i am a Bird',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              )),
-        ],
-      )),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: changeImage,
-        tooltip: 'change image',
-        child: const Icon(Icons.arrow_back),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: Container(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                customContainer(padding: 50, text: 'Box-1'),
+                customContainer(padding: 50, text: 'box-2')
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                customContainer(text: 'flutter', padding: 50),
+                customContainer(padding: 100, color: Colors.accents[8]),
+                customContainer(padding: 100, radius: 50),
+              ],
+            )
+          ],
+        ),
+      ),
     );
+  }
+
+  // ignore: non_constant_identifier_names
+  Container customContainer(
+      {double radius = 0,
+      double padding = 0,
+      String text = '',
+      Color color = Colors.blue}) {
+    return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(radius)),
+          color: color,
+          shape: BoxShape.rectangle,
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(padding),
+          child: Text(text),
+        ));
   }
 }
