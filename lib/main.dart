@@ -62,9 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer timer = Timer.periodic(const Duration(seconds: 2), (timer) {
-      changeImage();
-    });
+    // Timer timer = Timer.periodic(const Duration(seconds: 10), (timer) {
+    //   changeImage();
+    // });
   }
 
   @override
@@ -80,12 +80,22 @@ class _MyHomePageState extends State<MyHomePage> {
   //   });
   // }
 
-  void changeImage() {
+  void nextImage() {
     setState(() {
       if (index > images.length - 2) {
         index = 0;
       } else {
         index++;
+      }
+    });
+  }
+
+  void prevImage() {
+    setState(() {
+      if (index <= 0) {
+        index = images.length - 1;
+      } else {
+        index--;
       }
     });
   }
@@ -106,39 +116,54 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Text(
             '$_counter',
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headline5,
           ),
           Text(
             '$reverseCounter',
             style: Theme.of(context).textTheme.headline4,
           ),
           Container(
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                image: DecorationImage(
-                    image: NetworkImage(
-                      images[index],
-                    ),
-                    fit: BoxFit.cover),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(200),
-                child: Text(
-                  'i am a Bird',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              image: DecorationImage(
+                  image: NetworkImage(
+                    images[index],
                   ),
-                ),
-              )),
+                  fit: BoxFit.cover),
+            ),
+            width: 200,
+            height: 150,
+            // child: const Padding(
+            //   padding: EdgeInsets.all(100),
+            //   child: Text(
+            //     'i am a Bird',
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //       fontSize: 30,
+            //       fontWeight: FontWeight.w500,
+            //     ),
+            //   ),
+            // )
+          ),
+          Row(
+            children: <Widget>[
+              ElevatedButton(
+                  onPressed: prevImage, child: const Icon(Icons.arrow_left)),
+              const SizedBox(
+                width: 50,
+              ),
+              ElevatedButton(
+                  onPressed: nextImage, child: const Icon(Icons.arrow_right))
+            ],
+          )
         ],
       )),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: changeImage,
-        tooltip: 'change image',
-        child: const Icon(Icons.arrow_back),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: changeImage,
+      //   tooltip: 'change image',
+      //   child: const Icon(Icons.arrow_back),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
