@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const HomePage());
+  runApp(const MyApp());
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,112 +15,128 @@ class HomePage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Training'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
+
   final String title;
 
   @override
-  State<MyHomePage> createState() {
-    return _MyHomePageState();
-  }
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        //first main container
-        Container(
-          color: Colors.blue,
-          width: MediaQuery.of(context).size.width,
-          height: (MediaQuery.of(context).size.height / 100) * 15,
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Banner'),
-                  ElevatedButton(
-                    onPressed: () {
-                      debugPrint('button pressed');
-                    },
-                    child: const Icon(Icons.three_k),
-                  ),
-                ],
-              )),
+        appBar: AppBar(
+          leading: Icon(Icons.menu_open_sharp),
+          actions: [
+            Icon(Icons.lock),
+          ],
         ),
-        //second main container
-        Container(
-          color: Colors.grey[200],
-          child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+        body: Column(
+          children: [
+            Container(
+              alignment: Alignment.topLeft,
+              width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.fromLTRB(35, 50, 5, 10),
               child: Column(
-                children: [
-                  Row(
-                    children: const [
-                      Icon(Icons.alarm),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text('your password is updated'),
-                    ],
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Text(
+                    'Eat Healthy',
+                    style: TextStyle(
+                      fontSize: 35,
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          debugPrint('signin button pressed');
-                        },
-                        child: const Text('Sign in'),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          debugPrint('Dismiss button pressed');
-                        },
-                        child: const Text('Dismiss'),
-                      )
-                    ],
+                  Text(
+                    'Our Daily Healthy Food Habit',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
                   )
                 ],
-              )),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        //third main container
-        Container(
-          color: Colors.grey[200],
-          width: MediaQuery.of(context).size.width,
-          height: (MediaQuery.of(context).size.height / 100) * 55,
-          child: Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('item1'),
-                  Text('item2'),
-                  Text('item3'),
-                  Text('item4'),
-                  Text('item5'),
-                  Text('item6'),
-                  Text('item7'),
-                  Text('item8'),
-                  Text('item9'),
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(color: Colors.grey, width: 1)),
+                    child: const Text('Fruits'),
+                  ),
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(color: Colors.grey, width: 1)),
+                    child: const Text('Vegetables'),
+                  ),
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        border: Border.all(color: Colors.grey, width: 1)),
+                    child: const Text('Grilled'),
+                  ),
                 ],
-              )),
-        )
-      ],
-    ));
+              ),
+            ),
+            Container(
+                child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10, top: 10),
+                      color: Colors.amber,
+                      width: MediaQuery.of(context).size.width / 2.1,
+                      height: 120,
+                    ),
+                    Container(
+                      color: Colors.black,
+                      width: MediaQuery.of(context).size.width / 2.1,
+                      height: 120,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10, top: 10),
+                      color: Colors.amber,
+                      width: MediaQuery.of(context).size.width / 2.1,
+                      height: 120,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10, top: 10),
+                      color: Colors.black,
+                      width: MediaQuery.of(context).size.width / 2.1,
+                      height: 120,
+                    ),
+                  ],
+                )
+              ],
+            ))
+          ],
+        ));
   }
 }
