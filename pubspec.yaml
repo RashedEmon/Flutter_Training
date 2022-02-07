@@ -25,20 +25,19 @@ dev_dependencies:
 
 
 flutter:
-#  assets:
-#    - images/
+  assets:
+    - assets/images/
 
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - assets: fonts/Schyler-Regular.ttf
-  #       - assets: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - assets: fonts/TrajanPro.ttf
-  #       - assets: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-
+#  # example:
+#  fonts:
+#    - family: Schyler
+#      fonts:
+#        - assets: fonts/Schyler-Regular.ttf
+#        - assets: fonts/Schyler-Italic.ttf
+#          style: italic
+#    - family: Trajan Pro
+#      fonts:
+#        - assets: fonts/TrajanPro.ttf
+#        - assets: fonts/TrajanPro_Bold.ttf
+#          weight: 700
+#
