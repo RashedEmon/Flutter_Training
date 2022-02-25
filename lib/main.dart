@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Random random=Random();
   int active=0;
-
+//list of object. every object represent a card.
   List<CardModel> card=[
     CardModel(title: 'Heart Rate',icon: FontAwesomeIcons.heart, text1: "80-120", text2: "healthy", duration: '120bpm'),
     CardModel(icon: FontAwesomeIcons.moon,title: "Sleep", duration: "8 h 42 m",text1: "Deep Sleep", text2:"5 h 13 m" ),
@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
     CardModel(title: "Running", icon: FontAwesomeIcons.running, duration: "5,3 km", text2: "10 km", text1: "daily goal"),
     CardModel(title: "Cycling", icon: FontAwesomeIcons.biking, duration: "12,5 km", text1: "Daily Goal", text2: "20 km"),
   ];
+  //list of colors which will choose randomly to decorate cards background
   List<Color> colors=[
     Colors.cyan,
     Colors.teal,
@@ -56,6 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Colors.purple,
     Colors.redAccent
   ];
+  
+  //list of string that will show in tappable button
   List<String> days=["Day", "Week", "Month"];
 
   @override
@@ -125,8 +128,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 30,),
             Expanded(
+              //grid view builder to dynamically build every card and show as grid. it takes number of item to show in grid as ItemCount and it also take a function that return a widget.
+              //the gridview builder run the function itemCount times. when gridview builder run the function it also provide the calling number to the function which is recieved by index.
+              //index will be 0,1,2 ..... itemCount-1.
               child: GridView.builder(
                   itemCount: card.length,
+                  //cross axis count means the number of element show to crossaxis align. cross axis spacing means the amount to gap between cross axis elements.
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(childAspectRatio: 1, crossAxisCount: 2,mainAxisSpacing: 10,crossAxisSpacing: 10),
                   itemBuilder: (context,index){
                     int i=random.nextInt(7);
@@ -139,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
+//this functional widget represent a card in grid view. it takes some data that will show in the card. 
   Widget customContainer({Color? color,IconData? icon,String title='',String duration='',String text1='',String text2=''}){
     return Container(
       decoration: BoxDecoration(
