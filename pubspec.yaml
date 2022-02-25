@@ -9,6 +9,7 @@ environment:
 
 
 dependencies:
+  font_awesome_flutter: ^9.2.0
   flutter:
     sdk: flutter
 
@@ -25,19 +26,17 @@ dev_dependencies:
 
 
 flutter:
+  uses-material-design: true
   assets:
     - assets/images/
 
-#  # example:
-#  fonts:
-#    - family: Schyler
-#      fonts:
-#        - assets: fonts/Schyler-Regular.ttf
-#        - assets: fonts/Schyler-Italic.ttf
-#          style: italic
-#    - family: Trajan Pro
-#      fonts:
-#        - assets: fonts/TrajanPro.ttf
-#        - assets: fonts/TrajanPro_Bold.ttf
-#          weight: 700
-#
+# example:
+  fonts:
+    - family: Roboto Mono
+      fonts:
+        - asset: assets/fonts/RobotoMono-Italic-VariableFont_wght.ttf
+        - asset: assets/fonts/RobotoMono-VariableFont_wght.ttf
+          style: italic
+    - family: Dancing Script
+      fonts:
+        - asset: assets/fonts/DancingScript-VariableFont_wght.ttf
